@@ -20,6 +20,9 @@ int _printf(const char *format, ...)
 
 	while (format != NULL && format [i] != '\0')
 	{
+	if (format[i] == '%')
+	format++;
+	  
 	switch (format[i])
 		{
 		case 'c':
