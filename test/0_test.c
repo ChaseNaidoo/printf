@@ -9,10 +9,11 @@
  */
 int main (void)
 {
-	int c;
+	int c1;
+	int c2;
 
-	c = _printf("Test Passed.\n");
-	c = printf("Test Passed.\n");
+	c1 = _printf("Test Passed.\n");
+	c2 = printf("Test Passed.\n");
 
 	return (0);
 }
