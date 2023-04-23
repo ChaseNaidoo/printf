@@ -21,7 +21,8 @@ int _printf(const char *format, ...)
 	while (format != NULL && format [i] != '\0')
 	{
 	if (format[i] == '%')
-	format++;
+	  {
+	  i++;
 	  
 	switch (format[i])
 		{
@@ -33,7 +34,11 @@ int _printf(const char *format, ...)
 		default:
 		break;
 		}
-		i++;
+	  }
+	else
+	  {
+	_putchar(format[i]);
+	len++;
 	}
 	va_end(args);
 	return (len);
