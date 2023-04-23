@@ -36,9 +36,10 @@ int _printf(const char *format, ...)
 
   va_start(args, format);
 
-  while (format != NULL && format [i] != '\0')
+  while (*format != '\0')
     {
-      if (format[i] == '%')
+      if (*format == '%')
+	{
 	format++;
       
       switch (format[i])
@@ -49,9 +50,15 @@ int _printf(const char *format, ...)
 	  break;
 
 	default:
+	  _putchar(*format);
 	  break;
 	}
-      i++;
+	}
+      else
+	{
+	  _putchar(*format);
+	}
+      format++;
     }
   va_end(args);
   return (len);
