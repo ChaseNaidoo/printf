@@ -42,6 +42,7 @@ int _printf(const char *format, ...)
 	{
 	case 'c':
 	  _putchar(va_arg(args, int));
+	  len++;
 	  break;
 
 	default:
