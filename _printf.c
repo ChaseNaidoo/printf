@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 {
 	int i = 0;
 	int len = 0;
+	char *s;
 	va_list args;
 
 	va_start(args, format);
@@ -30,6 +31,18 @@ int _printf(const char *format, ...)
 		_putchar(va_arg(args, int));
 		len++;
 		break;
+
+		case 's':
+		{
+		s = va_arg(args, char *);
+		while (*s != '\0')
+			{
+			_putchar(*s);
+			s++;
+			len++;
+			}
+			break;
+		}
 
 		default:
 		_putchar(*format);
