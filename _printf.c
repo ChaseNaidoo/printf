@@ -12,36 +12,36 @@
  */
 int _printf(const char *format, ...)
 {
-  int i = 0;
-  int len = 0;
-  va_list args;
+	int i = 0;
+	int len = 0;
+	va_list args;
 
-  va_start(args, format);
+	va_start(args, format);
 
-  while (*format != '\0')
-    {
-      if (*format == '%')
+	while (*format != '\0')
 	{
-	  format++;
+	if (*format == '%')
+		{
+		format++;
 
-	  switch (format[i])
-	    {
-	    case 'c':
-	      _putchar(va_arg(args, int));
-	      len++;
-	      break;
+		switch (format[i])
+		{
+		case 'c':
+		_putchar(va_arg(args, int));
+		len++;
+		break;
 
-	    default:
-	      _putchar(*format);
-	      break;
-	    }
+		default:
+		_putchar(*format);
+		break;
+		}
 	}
-      else
+	else
 	{
-	  _putchar(*format);
+	_putchar(*format);
 	}
-      format++;
-    }
-  va_end(args);
-  return (len);
+	format++;
+	}
+	va_end(args);
+	return (len);
 }
