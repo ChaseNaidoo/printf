@@ -12,7 +12,6 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
 	int len = 0;
 	va_list args;
 
@@ -34,20 +33,20 @@ int _printf(const char *format, ...)
 		case 's': {
                     char* str = va_arg(args, char*);
                     while (*str != '\0') {
-                        putchar(*str);
+                        _putchar(*str);
                         str++;
                     }
                     break;
 
 		default:
-		  putchar(*format);
+		  _putchar(*format);
 		break;
 		}
 		}
 	  }
 	else
 	  {
-	    putchar(*format);
+	    _putchar(*format);
 	  }
 	}
 	va_end(args);
