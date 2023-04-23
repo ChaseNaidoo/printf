@@ -18,22 +18,37 @@ int _printf(const char *format, ...)
 
 	va_start(args, format);
 
-	while (format != NULL && format [i] != '\0')
+	while (*format != '\0')
 	{
-	if (format[i] == '%')
+	if (*format == '%')
+	  {
 	format++;
 	  
-	switch (format[i])
+	switch (*format)
 		{
 		case 'c':
 		_putchar(va_arg(args, int));
 		len++;
 		break;
 
+		case 's': {
+                    char* str = va_arg(args, char*);
+                    while (*str != '\0') {
+                        putchar(*str);
+                        str++;
+                    }
+                    break;
+
 		default:
+		  putchar(*format);
 		break;
 		}
-		i++;
+		}
+	  }
+	else
+	  {
+	    putchar(*format);
+	  }
 	}
 	va_end(args);
 	return (len);
