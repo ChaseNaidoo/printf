@@ -15,7 +15,7 @@ int specifier_len(const char *specifier)
 {
 	int len = 0;
 
-	while (*specifier && (*specifer == 'c' || *specifier == 's' || *specifier == '%'))
+	while (*specifier && (*specifier == 'c' || *specifier == 's' || *specifier == '%'))
 	{
 	len++;
 	specifier++;
