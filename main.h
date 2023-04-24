@@ -19,5 +19,11 @@ typedef struct print
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int (*print_func(const char *s))(va_list, char *, unsigned int);
+int format_specifier(const char *specifier, va_list args, char *buffer);
+int specifier_len(const char *specifier);
+int print_char(va_list args, char *buffer, unsigned int buffer_index);
+int print_str(va_list args, char *buffer, unsigned int buffer_index);
+int print_pct(va_list args, char *buffer, unsigned int buffer_index);
 
 #endif
