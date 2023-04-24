@@ -43,6 +43,11 @@ int _printf(const char *format, ...)
 			}
 			break;
 		}
+		
+		case '%':
+		putchar('%');
+		break;
+		
 
 		default:
 		_putchar(*format);
