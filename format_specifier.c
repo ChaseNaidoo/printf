@@ -24,7 +24,7 @@ int format_specifier(const char *specifier, va_list args, char *buffer)
 	else if (*specifier == 's')
 	len += print_str(args, buffer, len);
 	else if (*specifier == '%')
-	len += print_pct(buffer, len);
+	len += print_pct(args, buffer, len);
 	specifier++;
 	}
 	return (len);

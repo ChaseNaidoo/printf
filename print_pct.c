@@ -12,7 +12,7 @@
  *
  * Return: number of characters printed
  */
-int print_pct(char *buffer, unsigned int buffer_index)
+int print_pct(va_list args __attribute__((unused)), char *buffer, unsigned int buffer_index)
 {
 	buffer[buffer_index] = '%';
 	return (1);

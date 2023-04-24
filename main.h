@@ -24,6 +24,6 @@ int format_specifier(const char *specifier, va_list args, char *buffer);
 int specifier_len(const char *specifier);
 int print_char(va_list args, char *buffer, unsigned int buffer_index);
 int print_str(va_list args, char *buffer, unsigned int buffer_index);
-int print_pct(char *buffer, unsigned int buffer_index);
+int print_pct(va_list args __attribute__((unused)), char *buffer, unsigned int buffer_index);
 
 #endif

@@ -22,6 +22,6 @@ int print_str(va_list args, char *buffer, unsigned int buffer_index)
 	for (i = 0; s[i] != '\0'; i++)
 	{
 	buffer[buffer_index + i] = s[i];
-	return (i);
 	}
+	return (i);
 }
