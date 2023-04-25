@@ -28,5 +28,6 @@ void my_printf(const char *format, ...)
 int print_pct(va_list args);
 int print_int(va_list args);
 int (*get_print_func(const char *format))(va_list);
+int print_binary(va_list args);
 
 #endif

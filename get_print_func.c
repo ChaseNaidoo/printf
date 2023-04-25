@@ -9,6 +9,7 @@
 
 int (*get_print_func(const char *format))(va_list)
 {
+<<<<<<< HEAD
 format_t formats[] = {
 {'c', print_char},
 {'s', print_str},
@@ -20,14 +21,26 @@ format_t formats[] = {
 {'x', print_unsigned_int},
 {'X', print_unsigned_int},
 {0, NULL}
+=======
+	format_t formats[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'%', print_pct},
+		{'d', print_int},
+		{'i', print_int},
+		{'b', print_binary},
+		{0, NULL}
+>>>>>>> 0f43448799cf0dce45a6aff912a72aab5e6892d0
 };
-int i;
-for (i = 0; formats[i].format != 0; i++)
-{
-if (formats[i].format == *format)
-{
-return (formats[i].print_func);
-}
-}
-return (NULL);
+
+	int i;
+
+	for (i = 0; formats[i].format != 0; i++)
+	{
+		if (formats[i].format == *format)
+		{
+		return (formats[i].print_func);
+		}
+	}
+	return (NULL);
 }
