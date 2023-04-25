@@ -15,6 +15,10 @@ format_t formats[] = {
 {'%', print_pct},
 {'d', print_int},
 {'i', print_int},
+{'u', print_unsigned_int},
+{'o', print_unsigned_int},
+{'x', print_unsigned_int},
+{'X', print_unsigned_int},
 {0, NULL}
 };
 int i;
