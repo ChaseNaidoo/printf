@@ -16,9 +16,9 @@ format_t formats[] = {
 {'d', print_int},
 {'i', print_int},
 {'u', print_unsigned_int},
-{'o', print_unsigned_int},
-{'x', print_unsigned_int},
-{'X', print_unsigned_int},
+{'o', print_octal},
+{'x', print_hex},
+{'X', print_hex_upper},
 {'b', print_binary},
 {0, NULL}		
 };
