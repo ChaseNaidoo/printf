@@ -1,51 +1,29 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "main.h"
 
 /**
- * my_printf - prints formatted output
- * @format: format string
+ * print_unsigned - prints an unsigned integer in the specified format
+ * @format: conversion specifier character
+ * @args: va_list containing the unsigned int to print
  *
  * Return: number of characters printed
  */
-void my_printf(const char *format, ...)
+
+int print_unsigned(char format, va_list args)
 {
-	va_list args;
-	char *p;
+	unsigned int arg = va_arg(args, unsigned int);
 
-	va_start(args, format);
-
-	p = (char *)format;
-	while (*p != '\0')
+	switch (format)
 	{
-		if (*p == '%')
-		{
-			p++;
-			switch (*p)
-			{
-				case 'u':
-					printf("%u", va_arg(args, unsigned int));
-					break;
-				case 'o':
-					printf("%o", va_arg(args, unsigned int));
-					break;
-				case 'x':
-					printf("%x", va_arg(args, unsigned int));
-					break;
-				case 'X':
-					printf("%X", va_arg(args, unsigned int));
-					break;
-				default:
-					putchar(*p);
-					break;
-			}
-		}
-		else
-		{
-			putchar(*p);
-		}
-		p++;
+		case 'u':
+			return printf("%u", arg);
+		case 'o':
+			return printf("%o", arg);
+		case 'x':
+			return printf("%x", arg);
+		case 'X':
+			return printf("%X", arg);
+		default:
+			return 0;
 	}
-
-	va_end(args);
 }
