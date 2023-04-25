@@ -4,6 +4,14 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+/**
+ * _printf - print formatted output to the console
+ *
+ * @format: format string that specifies how to print the output
+ * Return: the number of characters printed, or -1 on error
+ *
+ */
+
 int _printf(const char *format, ...)
 {
 	int count = 0;
