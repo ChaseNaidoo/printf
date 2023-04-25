@@ -15,14 +15,14 @@ int (*print_func(const char *s))(va_list, char *, unsigned int)
 		{"c", print_char},
 		{"s", print_str},
 		{"%", print_pct},
-		{NULL, NULL}
+		{0, NULL}
 };
 
 	int i = 0;
 
-	while (printer[i].format_specifier != NULL)
+	while (printer[i].handler != NULL)
 	{
-	if (*s == *(printer[i].format_specifier))
+	if (*s == *(printer[i].format_char))
 	return (printer[i].handler);
 	i++;
 	}

@@ -1,50 +1,51 @@
-#include "main.h"
-#include <stdarg.h>
+#include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <unistd.h>
+#include "main.h"
 
 /**
- * _printf - function that produces output according to a format.
+ * _printf - prints output according to a format
+ * @format: the format string
  *
- * @format: input character string.
- *
- * Return: the number of characters printed.
+ * Return: the number of characters printed (excluding the null byte used to end output to strings)
  */
 int _printf(const char *format, ...)
 {
-	int len = 0, char_printed = 0;
-	char *buf;
+	int count = 0;
+	char buffer[1024];
+	int (*handler)(va_list, char*, unsigned int);
 	va_list args;
-
-	buf = malloc(1024);
-
-	if (!buf)
-	return (-1);
 
 	va_start(args, format);
 
 	while (*format)
 	{
-	if (*format == '%')
+      if (*format == '%')
 	{
-	len += format_specifier(format++, args, buf + len);
-	format += specifier_len(format);
-	continue;
+	  format++;
+	handler = print_func(format);
+	  if (handler == NULL)
+	    {
+	      if (write(1, "%", 1) == -1)
+		return (-1);
+	      count++;
+	    }
+	  else
+	    {
+	      format = handle_specifier(format, handler, args, buffer, &count);
+	    }
 	}
-
-	buf[len++] = *format++;
-
-	if (len == 1023)
-		{
-		buf[len] = '\0';
-		char_printed += write(1, buf, len);
-		len = 0;
-		}
+      else
+	{
+	  if (write(1, format, 1) == -1)
+	    return (-1);
+	  count++;
 	}
+	  format++;
+    }
 
-	buf[len] = '\0';
-	char_printed += write(1, buf, len);
-	va_end(args);
-	free(buf);
-	return (char_printed);
+  va_end(args);
+
+  return (count);
 }
