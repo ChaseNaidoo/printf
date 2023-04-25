@@ -6,6 +6,14 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+/**
+ * struct format - defines a format structure
+ *
+ * @format: the format specifier character
+ * @print_func: a pointer to a function that takes a va_list and returns an int
+ * Description: Maps format specifier characters to corresponding functions.
+ */
+
 typedef struct format
 {
 	char format;
