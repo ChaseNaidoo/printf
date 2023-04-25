@@ -20,6 +20,7 @@ int (*get_print_func(const char *format))(va_list)
 };
 
 	int i;
+
 	for (i = 0; formats[i].format != 0; i++)
 	{
 		if (formats[i].format == *format)
