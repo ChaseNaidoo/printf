@@ -1,77 +1,42 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include "main.h"
 
-/**
- * _printf - prints output according to a format
- *
- * @format: the format string
- *
- * Return: the number of characters printed (excluding the null byte used to end output to strings)
- *
- */
 int _printf(const char *format, ...)
 {
-	int count;
+	int count = 0;
+	int (*print_func)(va_list);
 	va_list args;
-	va_start(args, format);
 
-	count = 0;
+	va_start(args, format);
 
 	while (*format)
 	{
 	if (*format == '%')
 	{
-		format++;
-
-		switch (*format)
-		{
-		case 'c':
-		{
-		char c = va_arg(args, int);
-		if (write(1, &c, 1) == -1)
-		return (-1);
-		count++;
-		break;
-		}
-
-		case 's':
-		{
-		char *str = va_arg(args, char*);
-		while (*str)
-		{
-		if (write(1, str, 1) == -1)
-		return (-1);
-		str++;
-		count++;
-		}
-		break;
-		}
-
-		case '%':
-		{
-		if (write(1, "%", 1) == -1)
-		return (-1);
-		count++;
-		break;
-		}
-
-		default:
-		{
-		if (write(1, "%", 1) == -1)
-		return (-1);
-		count++;
-		format--;
-		break;
-		}
-		}
+	format++;
+	print_func = get_print_func(format);
+	if (print_func != NULL)
+	{
+	count += print_func(args);
+	}
+	else
+	{
+	if (write(1, "%", 1) == -1)
+	{
+	return (-1);
+	}
+	count++;
+	}
 	}
 	else
 	{
 	if (write(1, format, 1) == -1)
+	{
 	return (-1);
+	}
 	count++;
 	}
 	format++;
