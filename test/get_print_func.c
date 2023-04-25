@@ -1,6 +1,7 @@
 #include "main.h"
+#include <stdlib.h>
 
-int (*get_print_func(char *format))(int, int)
+int (*get_print_func(const char *format))(va_list)
 {
 	format_t formats[] = {
 		{'c', print_char},
@@ -8,12 +9,15 @@ int (*get_print_func(char *format))(int, int)
 		{'%', print_pct},
 		{0, NULL}
 };
-	format_t *fmt = formats;
-	while (fmt->format != 0) {
-	  if (fmt->format == format) {
-	    return fmt->print_func;
-	  }
-	  fmt++;
+
+	int i;
+
+	for (i = 0; formats[i].format != 0; i++)
+	{
+		if (formats[i].format == *format)
+		{
+		  return (formats[i].print_func);
+		}
 	}
 	return (NULL);
 }
