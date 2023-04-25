@@ -16,8 +16,9 @@ int (*get_print_func(const char *format))(va_list)
 		{'d', print_int},
 		{'i', print_int},
 		{'b', print_binary},
+		{'S', print_string},
 		{0, NULL}
-};
+	};
 
 	int i;
 
