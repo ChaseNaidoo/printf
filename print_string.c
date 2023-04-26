@@ -50,10 +50,8 @@ int print_hexstr(unsigned char c, int size)
 {
 	int i;
 	int count = 0;
-	char digits;
+	char digits[] = "0123456789ABCDEF";
 	char hex[2];
-
-	digits = "0123456789ABCDEF";
 
 	for (i = size - 1; i >= 0; i--)
 	{
