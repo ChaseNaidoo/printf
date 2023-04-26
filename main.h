@@ -33,6 +33,6 @@ int print_int(va_list args);
 int (*get_print_func(const char *format))(va_list);
 int print_binary(va_list args);
 int print_string(va_list args);
-int print_hex(unsigned char c, int size);
+int print_hexstr(unsigned char c, int size);
 
 #endif

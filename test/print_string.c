@@ -13,7 +13,6 @@
  */
 int print_string(va_list args)
 {
-	int i;
 	int count = 0;
 	char *str;
 
@@ -22,12 +21,12 @@ int print_string(va_list args)
 	if (str == NULL)
 	str = "(null)";
 
-	for (i = 0; str[i]; i++)
+	for (int i = 0; str[i]; i++)
 	{
 	if (str[i] < 32 || str[i] >= 127)
 		{
 		count += write(1, "\\x", 2);
-		count += print_hexstr(str[i], 2);
+		count += print_hex(str[i], 2);
 		}
 		else
 		{
@@ -38,7 +37,7 @@ int print_string(va_list args)
 }
 
 /**
- * print_hexstr - helper function for print_string
+ * print_hex - helper function for print_string
  *
  * @c: input characters
  * @size: size of input string
@@ -46,7 +45,7 @@ int print_string(va_list args)
  * Return: the converted characters
  *
  */
-int print_hexstr(unsigned char c, int size)
+int print_hex(unsigned char c, int size)
 {
 	int i;
 	int count = 0;
@@ -57,7 +56,7 @@ int print_hexstr(unsigned char c, int size)
 
 	for (i = size - 1; i >= 0; i--)
 	{
-	hex[i] = digits[c % 16];
+	hex[i] = hex_digits[c % 16];
 	c /= 16;
 	}
 
