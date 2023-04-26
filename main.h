@@ -34,5 +34,6 @@ int (*get_print_func(const char *format))(va_list);
 int print_binary(va_list args);
 int print_string(va_list args);
 int print_hexstr(unsigned char c, int size);
+int print_ptr(va_list args);
 
 #endif

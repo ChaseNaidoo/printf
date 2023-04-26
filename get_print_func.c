@@ -21,6 +21,7 @@ int (*get_print_func(const char *format))(va_list)
 		{'x', print_hex},
 		{'X', print_hex_upper},
 		{'S', print_string},
+		{'p', print_ptr},
 		{0, NULL}
 	};
 
