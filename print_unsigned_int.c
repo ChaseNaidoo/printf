@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 /**
- * print_unsigned - prints an unsigned integer
+ * print_unsigned_int - prints an unsigned integer
  *
  * @args: arguments passed to the function
  * Return: the number of characters printed
@@ -20,7 +20,7 @@ int print_unsigned_int(va_list args)
 	{
 		divisor *= 10;
 	}
-      
+
 	while (divisor != 0)
 	{
 		digit = (num / divisor) % 10;

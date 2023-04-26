@@ -26,6 +26,7 @@ int print_hex(va_list args)
 	while (num != 0)
 	{
 		int remainder = num % 16;
+
 		if (remainder < 10)
 			hex[i] = remainder + 48;
 		else
