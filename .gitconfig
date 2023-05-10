@@ -1,0 +1,5 @@
+[user]
+	email = chasenaidoo9@gmail.com
+	name = ChaseNaidoo
+[core]
+	excludesfile = /root/.gitignore_global
